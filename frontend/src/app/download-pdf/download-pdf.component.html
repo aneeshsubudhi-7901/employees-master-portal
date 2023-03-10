@@ -1,0 +1,64 @@
+<!-- <p>download-pdf works!</p> -->
+<h3 class="heading">{{ title }}</h3>
+<div id="view">
+  <div id="pdf-view">
+    <div id="htmlData">
+      <h3 class="pdf-title">Employee Details : {{ employeeData.name }}</h3>
+      <mat-list class="details-view">
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Employee ID</span>
+          <span matListItemLine>{{ employeeData.id }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Name</span>
+          <span matListItemLine>{{ employeeData.name }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Department</span>
+          <span matListItemLine>{{ employeeData.department }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Designation</span>
+          <span matListItemLine>{{ employeeData.designation }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Salary</span>
+          <span matListItemLine>{{ employeeData.salary }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Age</span>
+          <span matListItemLine>{{ employeeData.age }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Languages</span>
+          <span matListItemLine>{{ employeeData.languages }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Blood Group</span>
+          <span matListItemLine>{{ employeeData.bloodgroup }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">State</span>
+          <span matListItemLine>{{ employeeData.state }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Gender</span>
+          <span matListItemLine>{{ employeeData.gender }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle class="item-title">Mode of office</span>
+          <span matListItemLine>{{ employeeData.modeOfOffice }}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <button
+    class="download-btn"
+    mat-raised-button
+    color="primary"
+    (click)="openPDF(employeeData.id)"
+  >
+    Download PDF
+  </button>
+</div>

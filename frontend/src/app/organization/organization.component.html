@@ -1,0 +1,18 @@
+<div class="dialog-view">
+  <h1 mat-dialog-title>Hierarchy</h1>
+  <div mat-dialog-content>
+    <mat-vertical-stepper [linear]="false" #stepper>
+      <mat-step *ngFor="let element of dataSource">
+        <ng-template matStepLabel>
+          {{ element.name }}
+          <p>{{ element.designation }}</p>
+        </ng-template>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button color="primary" (click)="onNoClick()">
+      Close
+    </button>
+  </div>
+</div>

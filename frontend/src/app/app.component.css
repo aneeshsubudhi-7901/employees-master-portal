@@ -1,0 +1,36 @@
+/* .form-main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+} */
+
+app-form-main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.navbar{
+    background-color: indigo;
+    color:white;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between
+    /* flex:1 1 0; */
+    /* width:50vw */
+}
+
+.navbar-title{
+}
+.route-options{
+    /* color:white */
+}
+
+.nav-link{
+    color:white;
+    text-decoration-line: none;
+    padding:0 10px;
+    font-size:15px;
+}

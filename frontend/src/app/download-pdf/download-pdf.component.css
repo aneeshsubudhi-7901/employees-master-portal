@@ -1,0 +1,49 @@
+.heading{
+    font-size: 40px;
+    color:indigo;
+    margin:30px 0 40px 0;
+    text-align:center
+}
+
+#htmlData{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.download-btn{
+    margin-top:30px;
+}
+
+#pdf-view{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    /* border-radius:25px;
+    border-color: indigo;
+    border-width: 5px;
+    border-style: solid; */
+    padding: 40px;
+    margin: 0 auto;
+}
+
+.pdf-title{
+    color:indigo;
+    font-size:40px;
+    margin-top:20px;
+    margin-bottom: 30px;
+}
+
+.details-view{
+    border-radius:25px;
+    border-color:black;
+    border-width: 5px;
+    border-style: solid;
+    width:500px;
+}
+
+#view{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}

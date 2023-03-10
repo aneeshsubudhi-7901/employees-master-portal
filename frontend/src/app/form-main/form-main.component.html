@@ -1,0 +1,251 @@
+<p class="heading">{{ title }} : {{ operation }}</p>
+<div class="employeeForm">
+  <form [formGroup]="SignupForm" autocomplete="off">
+    <div class="form-group">
+      <div class="fields">
+        <!-- <label for="id">ID</label>
+              <input type="text" class="form-control" id="id" formControlName="id" /> -->
+        <label for="id">ID</label>
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="id"
+            placeholder="Type your employee ID"
+            id="id"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="fields">
+        <label for="name">Name</label>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="name"
+            placeholder="Type your Name"
+            id="name"
+          />
+        </mat-form-field>
+        <p
+          *ngIf="
+            this.SignupForm.controls['name'].errors &&
+            this.SignupForm.controls['name'].hasError('pattern')
+          "
+        >
+          <small style="color: red"
+            >Name should atleast have one or more letters.</small
+          >
+        </p>
+      </div>
+
+      <div class="fields">
+        <label for="department">Department</label>
+        <mat-form-field>
+          <mat-label>Department</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="department"
+            placeholder="Type your department"
+            id="department"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="fields">
+        <label for="Designation">Designation</label>
+        <mat-form-field>
+          <mat-label>Designation</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="designation"
+            placeholder="Type your designation"
+            id="designation"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="fields" *ngIf="employeesOps">
+        <label for="manid">Manager</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Manager</mat-label>
+          <mat-select formControlName="manid">
+            <mat-option
+              name="manid"
+              *ngFor="let element of employeesOps"
+              value="element.name"
+              (click)="onManSelect(element._id)"
+            >
+              {{ element.name }} ({{ element.designation }})</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="fields">
+        <label for="salary">Salary</label>
+        <br />
+        <mat-slider
+          min="0"
+          max="100000"
+          step="1000"
+          showTickMarks
+          discrete
+          [displayWith]="formatLabel"
+        >
+          <input matInput matSliderThumb id="salary" formControlName="salary" />
+        </mat-slider>
+      </div>
+
+      <div class="fields">
+        <label for="age">Age</label>
+        <br />
+        <mat-slider
+          min="0"
+          max="100"
+          step="1"
+          showTickMarks
+          discrete
+          [displayWith]="formatLabel"
+        >
+          <input matInput matSliderThumb id="age" formControlName="age" />
+        </mat-slider>
+      </div>
+      <div class="fields">
+        <label for="checkbox">Languages</label>
+        <br />
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="languages"
+        >
+          <mat-radio-button name="languages" value="Hindi"
+            >Hindi</mat-radio-button
+          >
+          <mat-radio-button name="languages" value="English"
+            >English</mat-radio-button
+          >
+          <mat-radio-button name="languages" value="Odiya"
+            >Odiya</mat-radio-button
+          >
+          <mat-radio-button name="languages" value="Marathi"
+            >Marathi</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <div class="fields">
+        <label for="bloodgroup">Blood Group</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Blood group</mat-label>
+          <mat-select formControlName="bloodgroup">
+            <mat-option name="bloodgroup" value="O+">O+</mat-option>
+            <mat-option name="bloodgroup" value="A+">A+</mat-option>
+            <mat-option name="bloodgroup" value="B+">B+</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="fields">
+        <label for="state">State</label>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state">
+            <mat-option name="state" value="Maharashtra"
+              >Maharashtra</mat-option
+            >
+            <mat-option name="state" value="Odisha">Odisha</mat-option>
+            <mat-option name="state" value="Gujarat">Gujarat</mat-option>
+            <mat-option name="state" value="West Bengal"
+              >West Bengal</mat-option
+            >
+            <mat-option name="state" value="Karnataka">Karnataka</mat-option>
+            <mat-option name="state" value="Goa">Goa</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="fields">
+        <label for="gender">Gender</label>
+        <br />
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+          <mat-radio-button name="gender" value="Male">Male</mat-radio-button>
+          <mat-radio-button name="gender" value="Female"
+            >Female</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <div class="fields">
+        <label for="modeOfOffice">Mode of Office</label>
+        <br />
+        <mat-slide-toggle formControlName="modeOfOffice"></mat-slide-toggle>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="fields btn-form"
+        routerLink="/employeesView"
+        *ngIf="view || create"
+      >
+        Employees List
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSubmit()"
+        class="fields btn-form"
+        routerLink="/employeesView"
+        *ngIf="create"
+        [disabled]="SignupForm.invalid"
+      >
+        Submit
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onReset()"
+        class="fields btn-form"
+        *ngIf="edit || create"
+      >
+        Reset
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onUpdate()"
+        class="fields btn-form"
+        routerLink="/employeesView"
+        *ngIf="edit"
+        [disabled]="SignupForm.invalid"
+      >
+        Update
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onCancel()"
+        class="fields btn-form"
+        routerLink="/employeesView"
+        *ngIf="edit"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="fields btn-form"
+        *ngIf="view"
+        routerLink="/pdf"
+        (click)="onDownload()"
+      >
+        <mat-icon>cloud_download</mat-icon>
+        Download Details
+      </button>
+    </div>
+  </form>
+  <!-- <p>form-main works!</p> -->
+</div>
